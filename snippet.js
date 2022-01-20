@@ -1,9 +1,11 @@
-var str = "2,1003" //The method can take up to two numbers, separated by commas, and will return their sum.
+var str = "//[***]\n1***2***3" //The method can take up to two numbers, separated by commas, and will return their sum.
 //for example “” or “1” or “1,2” as inputs.(for an empty string it will return 0)
 function add(str) {
     let result = 0
-    let numberArray = str.replace(/\//g, '').replace(/[\n\r;]/gm, ',').split(',').filter(Boolean)
+    let numberArray = str.replace(/\//g, '').replace(/[\n;*]/gm, ',').split(',')
+        .filter(Boolean) //remove empty string which we are replacing at first
         .map(n => {
+            if (isNaN(n)) n = 0 //check if is NaN
             n = parseInt(n)
             if (n > 1000) {
                 n = n - 1000
